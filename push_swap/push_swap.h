@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_execute_comms.c                                 :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/14 16:22:16 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/14 18:33:20 by anrzepec         ###   ########.fr       */
+/*   Created: 2019/03/15 16:15:44 by anrzepec          #+#    #+#             */
+/*   Updated: 2019/03/15 16:21:10 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int			ft_swap_a(t_stack **stack)
-{
-		
-}
+# include "main_header.h"
+
+#endif

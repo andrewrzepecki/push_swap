@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/14 16:22:55 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:55:50 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,27 @@ int			ft_parse_args(int ac, char **av)
 	return (ret);
 }
 
+void		ft_set_stack(t_stack ***stack)
+{
+	int		i;
+	t_stack	*elem;
+
+	i = 0;
+	while (i < ac)
+	{
+		elem = ft_set_stack_item(av[i])	
+	}
+}
+
 int			main(int ac, char **av)
 {
-	int	ret;
-	int	*stack[2];
+	int		ret;
+	t_stack	*stack[2];
 
 	ret = 1;
 	if (ft_parse_args(ac, av))
 	{
-		ft_putendl("Good");//stack = ft_set_stacks(ac, av);
+		ft_set_stacks(&stack, ac, av);
 		ret = ft_checker_output(ft_command_loop(stack));
 	}
 	else
