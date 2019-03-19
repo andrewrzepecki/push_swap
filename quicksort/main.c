@@ -6,13 +6,13 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 16:46:32 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/16 17:52:38 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/17 15:31:39 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-void		ft_quicksort(int **tab, int low, int high);
+void		ft_quicksort(int *tab, int low, int high);
 
 void		print_tab(int *tab, int len)
 {
@@ -35,7 +35,7 @@ int			main(int ac, char **av)
 	max = ft_atoi(av[2]);
 	while (++i < ac)
 		tab[i - 1] = ft_atoi(av[i]);
-	ft_quicksort(&tab, 0, ac - 2);
+	ft_quicksort(tab, 0, ac - 2);
 	print_tab(tab, ac);
 	return (0);
 }

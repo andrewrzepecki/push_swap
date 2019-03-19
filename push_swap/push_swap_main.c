@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_main.c                                     :+:      :+:    :+:   */
+/*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/18 19:02:26 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/19 00:59:46 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@ int			ft_stack_check(t_stack **chk, int d)
 
 	if (!(*chk))
 	{
-		*chk = ft_new_stkelem(d);
+		*chk = ft_new_stkelem(d, NULL, 0);
 		return (1);
 	}
 	tracer = chk;
-	while (*tracer)
+	while ((*tracer))
 	{
 		if ((*tracer)->value == d)
 			return (0);
 		tracer = &(*tracer)->next;
 	}
-	new = ft_new_stkelem(d);
-	new->next = *tracer;
+	new = ft_new_stkelem(d, NULL, 0);
 	*tracer = new;
 	return (1);
 }
@@ -68,29 +67,31 @@ int			ft_parse_args(int ac, char **av)
 	return (ret);
 }
 
-void		ft_set_stacks(t_stack **stack, int ac, char **av)
+void		ft_set_stacks(t_stack **stack, int ac, char **av, int *tab)
 {
 	int		i;
 	t_stack **tracer;
 	t_stack	*elem;
 
-	i = 0;
-	while (++i < ac)
+	i = 1;
+	elem = ft_new_stkelem(ft_atoi(av[i++]), tab, ac - 1);
+	if (!(*stack))
+		*stack = elem;
+	while (i < ac)
 	{
 		tracer = stack;
-		elem = ft_new_stkelem(ft_atoi(av[i]));
-		if (!(*stack))
-			*stack = elem;
-		while (tracer)
+		elem = ft_new_stkelem(ft_atoi(av[i]), tab, ac - 1);
+		while ((*tracer)->next)
 			tracer = &(*tracer)->next;
-		elem->next = *tracer;
-		*tracer = elem;
+		(*tracer)->next = elem;
+		i++;
 	}
 }
 
 int			main(int ac, char **av)
 {
 	int		ret;
+	int		*tab;
 	char	**commands;
 	t_stack	*stack[2];
 
@@ -99,7 +100,9 @@ int			main(int ac, char **av)
 	stack[B] = NULL;
 	if (ft_parse_args(ac, av))
 	{
-		ft_set_stacks(&stack[A], ac, av);
+		tab = ft_pos_tab(av, ac);
+		ft_set_stacks(&stack[A], ac, av, tab);
+		free(tab);
 		ft_free_stack(&stack[A]);
 		//commands = sort_stack(stack);
 		return (0);
