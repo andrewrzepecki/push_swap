@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:53:35 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/18 19:02:28 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:32:45 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ void		ft_malloc_fail(void)
 	exit(1);
 }
 
-int			ft_ps_output(int ret)
+int			ft_error_output(void)
 {
-	if (!ret)
-		ft_putendl("OK");
-	else
-		ft_putendl("Error");
-	return (ret);
+	ft_putendl("Error");
+	return (1);
 }
 

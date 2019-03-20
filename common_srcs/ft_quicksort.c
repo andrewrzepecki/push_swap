@@ -6,11 +6,11 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 16:56:08 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/19 00:53:02 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/03/20 16:36:51 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../main_header.h"
 
 int			ft_get_pivot(int **tab, int low, int high)
 {
@@ -49,18 +49,4 @@ void		ft_quicksort(int *tab, int low, int high)
 		ft_quicksort(tab, low, pivot - 1);
 		ft_quicksort(tab, pivot + 1, high);
 	}
-}
-
-int			*ft_pos_tab(char **av, int ac)
-{
-	int i;
-	int *tab;
-
-	if (!(tab = (int*)malloc(sizeof(int) * (ac - 1))))
-		ft_malloc_fail();
-	i = 0;
-	while (++i < ac)
-		tab[i - 1] = ft_atoi(av[i]);
-	ft_quicksort(tab, 0, ac - 2);
-	return (tab);
 }

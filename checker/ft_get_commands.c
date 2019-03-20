@@ -6,39 +6,39 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/14 18:33:20 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:36:48 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int			ft_parse_command(char *buff)
+size_t		ft_parse_command(char *buff)
 {
-	if (!ft_strcmp(buff, "sa\n"))
+	if (!ft_strcmp(buff, "sa"))
 		return (0);
-	if (!ft_strcmp(buff, "sb\n"))
+	if (!ft_strcmp(buff, "sb"))
 		return (1);
-	if (!ft_strcmp(buff, "ss\n"))
+	if (!ft_strcmp(buff, "ss"))
 		return (2);
-	if (!ft_strcmp(buff, "pa\n"))
+	if (!ft_strcmp(buff, "pa"))
 		return (3);
-	if (!ft_strcmp(buff, "pb\n"))
+	if (!ft_strcmp(buff, "pb"))
 		return (4);
-	if (!ft_strcmp(buff, "ra\n"))
+	if (!ft_strcmp(buff, "ra"))
 		return (5);
-	if (!ft_strcmp(buff, "rb\n"))
+	if (!ft_strcmp(buff, "rb"))
 		return (6);
-	if (!ft_strcmp(buff, "rr\n"))
+	if (!ft_strcmp(buff, "rr"))
 		return (7);
-	if (!ft_strcmp(buff, "rra\n"))
+	if (!ft_strcmp(buff, "rra"))
 		return (8);
-	if (!ft_strcmp(buff, "rrb\n"))
+	if (!ft_strcmp(buff, "rrb"))
 		return (9);
-	if (!ft_strcmp(buff, "rrr\n"))
+	if (!ft_strcmp(buff, "rrr"))
 		return (10);
 	return (1995);
 }
-
+/*
 void		ft_initialize_ctab(t_commands **tab)
 {
 	(*tab)[0].f = ft_swap_a;
@@ -53,23 +53,20 @@ void		ft_initialize_ctab(t_commands **tab)
 	(*tab)[9].f = ft_rev_rot_b;
 	(*tab)[10].f = ft_rev_rot_r;
 }
-
+*/
 int			ft_command_loop(int **stack)
 {
-	char		buff[BUFF_SIZE + 1];
+	char		*buff;
 	size_t		ret;
 	t_commands	c_tab[11];
 
-	ft_initialize_ctab(&c_tab);
-	while (1)
+	//ft_initialize_ctab(&c_tab);
+	while (get_next_line(0, &buff))
 	{
-		if ((ret = read(0, buff, BUFF_SIZE)) < 0)
-			break;
-		buff[ret] = '\0';
 		if ((ret = ft_parse_command(buff)) > 10)
-			return (1)
-		if (c_tab[ret].f(stack))
-			return (0);
+			return (1);
+	//	if (c_tab[ret].f(stack))
+	//		return (1);
 	}
-	return (1);
+	return (ft_check_sort(stack));
 }
