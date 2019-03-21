@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_tab_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/21 19:52:29 by anrzepec         ###   ########.fr       */
+/*   Created: 2019/03/21 19:16:18 by anrzepec          #+#    #+#             */
+/*   Updated: 2019/03/21 19:17:45 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CHECKER_H_
-# define CHECKER_H_
+#include "../main_header.h"
 
-# include "../main_header.h"
-
-typedef	struct		s_clist
+int			*ft_pos_tab(char **av, int ac)
 {
-	char			*cmd;
-	struct s_clist	*next;
-}					t_clist;
+	int i;
+	int *tab;
 
-/* Output Funcitons */
-int					ft_checker_output(int ret);
-
-/* Command loop functions */
-int					ft_command_loop(t_stack **stack, int *tab, int t_len);
-void				ft_initialize_ctab(t_commands *tab);
-size_t				ft_parse_command(char *buff);
-
-#endif
+	if (!(tab = (int*)malloc(sizeof(int) * (ac - 1))))
+		ft_malloc_fail();
+	i = 0;
+	while (++i < ac)
+		tab[i - 1] = ft_atoi(av[i]);
+	ft_quicksort(tab, 0, ac - 2);
+	return (tab);
+}

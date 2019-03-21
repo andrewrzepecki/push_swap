@@ -6,11 +6,27 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:26:34 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/20 16:36:50 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/21 19:51:54 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main_header.h"
+
+int			ft_stacklen(t_stack **stack)
+{
+	int i;
+	t_stack **tracer;
+
+	i = 0;
+	tracer = stack;
+	if (*tracer)
+		while ((*tracer)->next)
+		{
+			tracer = &(*tracer)->next;
+			i++;
+		}
+	return (i);
+}
 
 void		ft_set_stacks(t_stack **stack, int ac, char **av, int *tab)
 {
@@ -40,7 +56,6 @@ void		ft_free_stack(t_stack **stk)
 	if (stk)
 		while (*stk)
 		{
-			printf("val: %d, pos: %d\n", (*stk)->value, (*stk)->pos);
 			prev = *stk;
 			(*stk) = (*stk)->next;
 			free(prev);
@@ -53,8 +68,10 @@ int			ft_get_pos(int *tab, int t_len, int nb)
 
 	i = -1;
 	while (++i < t_len)
+	{
 		if (nb == tab[i])
 			break;
+	}
 	return (i);
 }
 
@@ -65,7 +82,10 @@ t_stack		*ft_new_stkelem(int d, int *tab, int t_len)
 	if (!(elem = (t_stack*)malloc(sizeof(t_stack))))
 		ft_malloc_fail();
 	elem->value = d;
-	elem->pos = ft_get_pos(tab, t_len, d);
+	if (tab)
+		elem->pos = ft_get_pos(tab, t_len, d);
+	else
+		elem->pos = 0;
 	elem->next = NULL;
 	return (elem);
 }
