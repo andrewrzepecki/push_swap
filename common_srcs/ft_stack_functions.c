@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:26:34 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/21 19:51:54 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:49:38 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ int			ft_stacklen(t_stack **stack)
 	i = 0;
 	tracer = stack;
 	if (*tracer)
+	{
+		i++;
 		while ((*tracer)->next)
 		{
 			tracer = &(*tracer)->next;
 			i++;
 		}
+	}
 	return (i);
 }
 

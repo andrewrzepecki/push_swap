@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:22:16 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/21 19:52:27 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:57:29 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,29 @@ void		ft_rotate(t_stack **stack)
 void		ft_rev_rotate(t_stack **stack)
 {
 	t_stack	**tracer;
+	t_stack **tmp;
 
 	if (ft_stacklen(stack) > 1)
 	{
 		tracer = stack;
-		while ((*tracer)->next)
-		{
-			(*tracer)->next->value = (*tracer)->value;
-			(*tracer)->next->pos = (*tracer)->pos;
+		while ((*tracer)->next->next)
 			tracer = &(*tracer)->next;
-		}
-		(*stack)->value = (*tracer)->value;
-		(*stack)->pos = (*tracer)->pos;
+		(*tracer)->next->next = *stack;
+		*stack = (*tracer)->next;
+		(*tracer)->next = NULL;
+
 	}
 }
 
 void		ft_push(t_stack **src, t_stack **dst)
 {
-	t_stack **tmp_src;
+	t_stack *tmp_src;
 
 	if (*src)
 	{
-		tmp_src = src;
-		src = &(*src)->next;
-		(*tmp_src)->next = *dst;
-		dst = tmp_src;	
+		tmp_src = (*src);
+		*src = (*src)->next;
+		tmp_src->next = *dst;
+		*dst = tmp_src;	
 	}
 }

@@ -6,11 +6,31 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/21 19:52:28 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:57:28 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void		ft_print_stacks(t_stack **a, t_stack **b)
+{
+	t_stack **tracer;
+
+	tracer = a;
+	printf("STACK A: \n");
+	while ((*tracer))
+	{
+		printf("value: %d, pos: %d\n", (*tracer)->value, (*tracer)->pos);
+		tracer = &(*tracer)->next;
+	}
+	tracer = b;
+	printf("\nSTACK B: \n");
+	while ((*tracer))
+	{
+		printf("value: %d, pos: %d\n", (*tracer)->value, (*tracer)->pos);
+		tracer = &(*tracer)->next;
+	}
+}
 
 int			main(int ac, char **av)
 {

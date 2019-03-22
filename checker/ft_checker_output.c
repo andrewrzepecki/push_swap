@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:53:35 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/20 16:36:47 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:58:50 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int			ft_checker_output(int ret)
 {
 	if (!ret)
 		ft_putendl("OK");
-	else
+	else if (ret == 1)
 		ft_putendl("Error");
+	else
+		ft_putendl("KO");
 	return (ret);
 }
 

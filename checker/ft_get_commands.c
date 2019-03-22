@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/21 19:52:28 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:57:28 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ int			ft_check_sort(t_stack **stack, int *tab, int t_len)
 		while ((*tracer)->next && i < t_len) 
 		{
 			if ((*tracer)->value != tab[i])
-				return (1);
+				return (2);
 			tracer = &(*tracer)->next;
 			i++;
 		}
 		return (0);
 	}
-	return (1);
+	return (2);
 }
 
 int			ft_command_loop(t_stack **stack, int *tab, int t_len)
