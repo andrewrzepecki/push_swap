@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/22 18:19:14 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/23 21:44:46 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ int			main(int ac, char **av)
 		tab = ft_pos_tab(av, ac);
 		ft_set_stacks(&stack[A], ac, av, tab);
 		free(tab);
-		//ft_sort_stacks(stack, 0, ac - 1);
+		ft_sort_stacks(stack, 0, ac - 2);
+		printf("A:\n");
 		ft_free_stack(&stack[A]);
+		printf("\nB\n");
+		ft_free_stack(&stack[B]);
 		return (0);
 	}
 	return (ft_error_output());
