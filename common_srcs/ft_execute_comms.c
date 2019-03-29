@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:22:16 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/23 14:58:58 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:33:36 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ void		ft_swap(t_stack **stack)
 		tmp = (*stack)->pos;
 		(*stack)->pos = (*stack)->next->pos;
 		(*stack)->next->pos = tmp;
+		tmp = (*stack)->inter;
+		(*stack)->inter = (*stack)->next->inter;
+		(*stack)->next->inter = tmp;
 	}
 }
 
 void		ft_rotate(t_stack **stack)
 {
-	int		first[2];
+	int		first[3];
 	t_stack	**tracer;
 	
 	if (ft_stacklen(stack) > 1)
@@ -37,14 +40,17 @@ void		ft_rotate(t_stack **stack)
 		tracer = stack;
 		first[0] = (*tracer)->value;
 		first[1] = (*tracer)->pos;
+		first[2] = (*tracer)->inter;
 		while ((*tracer)->next)
 		{
 			(*tracer)->value = (*tracer)->next->value;
 			(*tracer)->pos = (*tracer)->next->pos;
+			(*tracer)->inter = (*tracer)->next->inter;
 			tracer = &(*tracer)->next;
 		}
 		(*tracer)->value = first[0];
 		(*tracer)->pos = first[1];
+		(*tracer)->inter = first[2];
 	}
 }
 

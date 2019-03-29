@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:21:22 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/23 16:47:22 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:38:56 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_stack
 {
 	int				value;
 	int				pos;
+	int 			inter;
 	struct s_stack	*next;
 }					t_stack;
 

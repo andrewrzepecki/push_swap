@@ -6,56 +6,58 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 21:45:15 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/23 22:15:10 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:37:16 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_amin(t_stack **stack, int min)
+int		ft_quicksort_a(t_stack **stack, int max_pos)
 {
-	if ((*stack)->next->pos == min)
+	if ((*stack)->pos == max_pos + 1)
+	{
+		(*stack)->inter = -1;
+		ft_rotate(stack);
+		ft_putendl("ra");
+		return (1);
+	}
+	if ((*stack)->next->pos == max_pos + 1)
 	{
 		ft_swap(stack);
 		ft_putendl("sa");
-		return ;
-	}
-	ft_rev_rotate(stack);
-	ft_putendl("rra");
-}
-
-void	ft_sort_amax(t_stack **stack, int min)
-{
-	if ((*stack)->next->pos == min)
-	{
+		(*stack)->inter = -1;
 		ft_rotate(stack);
 		ft_putendl("ra");
-		return ;
+		return (1);
 	}
-	ft_swap(stack);
-	ft_putendl("sa");
-	ft_rev_rotate(stack);
-	ft_putendl("rra");
+	return (0);
 }
 
-void	ft_sort_three_a(t_stack **stack, int min)
+int		ft_push_and_sort_a(t_stack **stack, int ret)
 {
-	if (ft_stacklen(stack) >= 3)
+	int i;
+	int max_pos;
+
+	i = 0;
+	if (stack[B])
+		max_pos = stack[B]->pos;
+	else
+		max_pos = ft_get_max_pos(&stack[A]);  
+	while (i < ret)
 	{
-		if (min + 2 == (*stack)->pos)
-			return (ft_sort_amax(stack, min));
-		else if (min + 1 == (*stack)->pos)
-			return (ft_sort_amin(stack, min));
-		else if (min == (*stack)->pos)
-		{
-			if ((*stack)->next->pos == min + 2)
-			{
-				ft_rev_rotate(stack);
-				ft_putendl("rra");
-				ft_swap(stack);
-				ft_putendl("sa");
-			}
-			return ;
-		}
+		ft_push(&stack[B], &stack[A]);
+		ft_putendl("pa");
+		i++;
 	}
+	i = 0;
+	while (i < ret)
+	{
+		stack[A]->inter = -1;
+		ft_rotate(&stack[A]);
+		ft_putendl("ra");
+		i++;
+	}
+	while (ft_quicksort_a(&stack[A], max_pos))
+		max_pos++;
+	return (max_pos);
 }

@@ -6,11 +6,44 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 15:02:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/23 22:15:09 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:37:15 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		ft_get_max_pos(t_stack **stack)
+{
+	t_stack **tracer;
+
+	tracer = stack;
+	while ((*tracer)->next)
+	{
+		tracer = &(*tracer)->next;
+	}
+	return ((*tracer)->pos);
+}
+
+int		ft_push_back_b(t_stack **stack)
+{
+	int i;
+	int max_pos;
+	int inter;
+
+	i = 0;
+	inter = stack[A]->inter;
+	max_pos = stack[A]->pos;
+	while (stack[A]->inter == inter && inter != -1)
+	{
+		max_pos = max_pos > stack[A]->pos ? max_pos : stack[A]->pos;
+		ft_push(&stack[A], &stack[B]);
+		ft_putendl("pb");
+		i++;
+	}
+	if (i == 1)
+		ft_push_back_b(stack);
+	return (max_pos);
+}
 
 int		ft_sort_split(t_stack **stack, int min)
 {
@@ -25,37 +58,40 @@ int		ft_sort_split(t_stack **stack, int min)
 			ft_putendl("sb");
 		}
 	}
-	else
+	else if (size == 3)
 		ft_sort_three_b(&stack[B], min);
-	if (ft_stacklen(&stack[A]) < 4)
-		ft_sort_three_a(&stack[A], min + size);
 	return (size);
 
 }
 
 int		ft_calculate_pivot(int min, int max)
 {
-	if (!((min - max) % 2))
-		return ((min + max) / 2);
-	return ((min + max) / 2 + 1);
+	if (min == max)
+		return (max + 1);
+	if (!((min + max) % 2))
+		return (((min + max) / 2));
+	return (((min + max) / 2) + 1);
 }
 
 int		ft_loop_positions(t_stack **stack, int pivot, int s_index)
 {
 	t_stack **tracer;
+	int		i;
 
+	i = 0;
 	tracer = stack;
 	while ((*tracer))
 	{
 		if (s_index == A)
 		{
 			if ((*tracer)->pos < pivot)
-				return (1);
+				return (i);
 		}
 		else
-			if ((*tracer)->pos >= pivot)
-				return (1);
+			if ((*tracer)->pos > pivot)
+				return (i);
+		i++;
 		tracer = &(*tracer)->next;
 	}
-	return (0);
+	return (-1);
 }

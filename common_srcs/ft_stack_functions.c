@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:26:34 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/23 19:24:29 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/29 20:34:10 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		ft_free_stack(t_stack **stk)
 	if (stk)
 		while (*stk)
 		{
-			printf("pos: %d | val: %d\n", (*stk)->pos, (*stk)->value);
 			prev = *stk;
 			(*stk) = (*stk)->next;
 			free(prev);
@@ -90,6 +89,7 @@ t_stack		*ft_new_stkelem(int d, int *tab, int t_len)
 		elem->pos = ft_get_pos(tab, t_len, d);
 	else
 		elem->pos = 0;
+	elem->inter = 0;
 	elem->next = NULL;
 	return (elem);
 }
