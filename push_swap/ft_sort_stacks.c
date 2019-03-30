@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 17:49:59 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/29 20:38:07 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/30 16:32:13 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int			ft_split_b(t_stack **stack, int pivot, int inter)
 	int ret;
 
 	i = 0;
-	ft_rotate(&stack[B]);
-	ft_putendl("rb");
 	while ((ret = ft_loop_positions(&stack[B], pivot, B)) > -1)
 	{
 		while (ret)
@@ -42,8 +40,6 @@ int			ft_split_a(t_stack **stack, int pivot)
 	int ret;
 
 	i = 0;
-	ft_rotate(&stack[A]);
-	ft_putendl("ra");
 	while ((ret = ft_loop_positions(&stack[A], pivot, A)) > -1)
 	{
 		while (ret)
@@ -66,7 +62,7 @@ int			ft_split_stack(t_stack **stack, int min, int max, int s_index)
 	int		i;
 
 	i = 0;
-	pivot = ft_calculate_pivot(min, max);
+	pivot = ft_calculate_pivot(min, max, s_index);
 	if (s_index == A)
 	{
 		while (stack[A]->pos < pivot)
@@ -93,8 +89,10 @@ void		ft_sort_stacks(t_stack **stack, int min, int max, int s_index)
 	int	ret;
 
 	ret = 0;
-	while (max - min > 3 || ft_stacklen(&stack[B]) > 3)
+	while (max - min > 2)
 	{
+		//print_stacks(stack);
+		//getchar();
 		ret = ft_split_stack(stack, min, max, s_index);
 		max = max - ret;
 		s_index = B;

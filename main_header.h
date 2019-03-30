@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:21:22 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/29 20:38:56 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/30 19:22:13 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 #include "libft/libft.h"
 
-# define A 0
-# define B 1
+# define A 			0
+# define B 			1
+# define _MIN_INT_ 	-2147483648
+# define _MAX_INT_ 	2147483647
 
 /*Stack Structures */
 typedef struct		s_stack
@@ -33,7 +35,7 @@ typedef struct		s_commands
 }					t_commands;
 
 /* Parsing Functions */
-int					ft_parse_args(int ac, char **av);
+int					ft_parse_args(int ac, char **av, t_stack **stack);
 int					ft_check_double(char *s, int index, int len);
 int					ft_stack_check(t_stack **chk, int d);
 
@@ -41,7 +43,7 @@ int					ft_stack_check(t_stack **chk, int d);
 int					ft_stacklen(t_stack **stack);
 void				ft_set_stacks(t_stack **stack, int ac, char **av, int *tab);
 void				ft_free_stack(t_stack **stk);
-int					*ft_pos_tab(char **av, int ac);
+int					*ft_pos_tab(t_stack **stack);
 int					ft_get_pos(int *tab, int t_len, int nb);
 t_stack				*ft_new_stkelem(int d, int *tab, int t_len);
 

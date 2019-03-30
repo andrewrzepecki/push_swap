@@ -6,23 +6,11 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 15:02:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/29 20:37:15 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/30 16:32:13 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		ft_get_max_pos(t_stack **stack)
-{
-	t_stack **tracer;
-
-	tracer = stack;
-	while ((*tracer)->next)
-	{
-		tracer = &(*tracer)->next;
-	}
-	return ((*tracer)->pos);
-}
 
 int		ft_push_back_b(t_stack **stack)
 {
@@ -40,8 +28,6 @@ int		ft_push_back_b(t_stack **stack)
 		ft_putendl("pb");
 		i++;
 	}
-	if (i == 1)
-		ft_push_back_b(stack);
 	return (max_pos);
 }
 
@@ -64,7 +50,7 @@ int		ft_sort_split(t_stack **stack, int min)
 
 }
 
-int		ft_calculate_pivot(int min, int max)
+int		ft_calculate_pivot(int min, int max, int index)
 {
 	if (min == max)
 		return (max + 1);

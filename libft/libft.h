@@ -6,7 +6,7 @@
 /*   By: anrzepec <anrzepec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 19:12:29 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/02/15 14:33:34 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/30 18:28:28 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strncpy(char *dst, char const *src, size_t len);
 
 int					ft_atoi(const char *str);
+
+long long int		ft_atoll(const char *str);
 
 char				*ft_strdup(char const *s1);
 

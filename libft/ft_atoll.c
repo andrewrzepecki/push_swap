@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 14:43:20 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 18:16:32 by anrzepec         ###   ########.fr       */
+/*   Created: 2019/03/30 18:14:54 by anrzepec          #+#    #+#             */
+/*   Updated: 2019/03/30 18:17:24 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+long long int		ft_atoll(const char *str)
 {
 	int			c;
-	int			res;
+	long long	res;
 	int			neg;
 
 	neg = 1;

@@ -6,7 +6,7 @@
 #    By: anrzepec <anrzepec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/17 19:12:20 by anrzepec          #+#    #+#              #
-#    Updated: 2019/03/11 17:52:54 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/03/30 18:16:47 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC 	= ft_printf/ft_printf.c \
 		  ft_strrev.c \
 		  ft_char_count.c \
 		  get_next_line.c \
+		  ft_atoll.c \
 		  ft_atoi.c \
 		  ft_bzero.c \
 		  ft_isalnum.c \
