@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 19:20:59 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 12:54:32 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,33 +54,28 @@ void		ft_push_stacks(int function, t_stack **stack)
 		ft_push(&stack[A], &stack[B]);
 }
 
-int			ft_check_sort(t_stack **stack, int *tab, int t_len)
+int			ft_check_sort(t_stack **stack, int len)
 {
 	t_stack	**tracer;
 	int		i;
 
 	i = 0;
 	tracer = stack;
-	if (*tracer)
+	while (*tracer) 
 	{
-		while ((*tracer)->next && i < t_len) 
-		{
-			if ((*tracer)->value != tab[i])
-				return (2);
-			tracer = &(*tracer)->next;
-			i++;
-		}
-		return (0);
+		if ((*tracer)->pos != i)
+			return (2);
+		tracer = &(*tracer)->next;
+		i++;
 	}
-	return (2);
+	return (i == len ? 1 : 2);
 }
 
-int			ft_command_loop(t_stack **stack, int *tab, int t_len)
+int			ft_command_loop(t_stack **stack, int len)
 {
 	char		*buff;
 	size_t		ret;
 	t_commands	c_tab[3];
-	t_clist		*lst;
 
 	ft_initialize_ctab(c_tab);
 	while (get_next_line(0, &buff))
@@ -99,5 +94,5 @@ int			ft_command_loop(t_stack **stack, int *tab, int t_len)
 		else
 			ft_push_stacks(ret, stack);
 	}
-	return (ft_check_sort(&stack[A], tab, t_len));
+	return (ft_check_sort(&stack[A], len));
 }

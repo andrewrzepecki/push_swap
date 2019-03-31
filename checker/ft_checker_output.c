@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:53:35 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 17:11:28 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 12:25:39 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void		ft_malloc_fail(void)
 int			ft_checker_output(int ret)
 {
 	if (!ret)
-		ft_putendl("OK");
-	else if (ret == 1)
 		ft_putendl("Error");
+	else if (ret == 1)
+		ft_putendl("OK");
 	else
 		ft_putendl("KO");
 	return (ret);

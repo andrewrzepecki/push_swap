@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:21:22 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 19:22:13 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 12:52:37 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int					ft_stack_check(t_stack **chk, int d);
 int					ft_stacklen(t_stack **stack);
 void				ft_set_stacks(t_stack **stack, int ac, char **av, int *tab);
 void				ft_free_stack(t_stack **stk);
-int					*ft_pos_tab(t_stack **stack);
+void				ft_pos_tab(t_stack **stack);
 int					ft_get_pos(int *tab, int t_len, int nb);
 t_stack				*ft_new_stkelem(int d, int *tab, int t_len);
 

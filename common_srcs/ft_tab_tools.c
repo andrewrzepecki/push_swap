@@ -6,13 +6,29 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 19:16:18 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 19:21:40 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 13:00:20 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main_header.h"
 
-int			*ft_pos_tab(t_stack **stack)
+void		ft_set_positions(t_stack **stack, int *tab)
+{
+	int 	i;
+	t_stack	**tracer;
+
+	tracer = stack;
+	while (*tracer)
+	{
+		i = 0;
+		while (tab[i] != (*tracer)->value)
+			i++;
+		(*tracer)->pos = i;
+		tracer = &(*tracer)->next;
+	}
+}
+
+void		ft_pos_tab(t_stack **stack)
 {
 	int i;
 	int *tab;
@@ -27,7 +43,9 @@ int			*ft_pos_tab(t_stack **stack)
 	{
 		tab[i] = (*tracer)->value;
 		tracer = &(*tracer)->next;
+		i++;
 	}
 	ft_quicksort(tab, 0, ft_stacklen(stack) - 1);
-	return (tab);
+	ft_set_positions(stack, tab);
+	free(tab);
 }

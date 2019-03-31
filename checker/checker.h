@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/22 16:57:30 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 12:52:11 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef	struct		s_clist
 int					ft_checker_output(int ret);
 
 /* Command loop functions */
-int					ft_command_loop(t_stack **stack, int *tab, int t_len);
+int					ft_command_loop(t_stack **stack, int len);
 void				ft_initialize_ctab(t_commands *tab);
 size_t				ft_parse_command(char *buff);
 

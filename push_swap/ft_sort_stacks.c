@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 17:49:59 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 16:32:13 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 13:19:22 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void		ft_sort_stacks(t_stack **stack, int min, int max, int s_index)
 	int	ret;
 
 	ret = 0;
-	while (max - min > 2)
+	while (max - min > 3 || ft_stacklen(&stack[B]) > 3)
 	{
 		//print_stacks(stack);
 		//getchar();

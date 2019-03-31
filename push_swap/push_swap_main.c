@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 16:32:13 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/03/31 13:18:45 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,16 @@ int			ft_quick_check(t_stack **stack)
 int			main(int ac, char **av)
 {
 	int		ret;
-	int		*tab;
 	char	**commands;
 	t_stack	*stack[2];
 
 	ret = 1;
 	stack[A] = NULL;
 	stack[B] = NULL;
-	if (ft_parse_args(ac, av))
+	if (ft_parse_args(ac, av, &stack[A]))
 	{
-		tab = ft_pos_tab(av, ac);
-		ft_set_stacks(&stack[A], ac, av, tab);
-		free(tab);
-		ft_sort_stacks(stack, 0, ac - 2, A);
+		ft_pos_tab(&stack[A]);
+		ft_sort_stacks(stack, 0, ft_stacklen(&stack[A]) - 1, A);
 		ft_free_stack(&stack[A]);
 		ft_free_stack(&stack[B]);
 		return (0);
