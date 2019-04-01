@@ -6,11 +6,29 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 15:02:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 16:32:13 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/01 19:18:08 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int			ft_quick_check(t_stack **stack)
+{
+	int		pos;
+	t_stack **tracer;
+
+	pos = 0;
+	tracer = stack;
+	while (*tracer)
+	{
+		if ((*tracer)->pos == pos)
+			pos++;
+		else
+			return (0);
+		tracer = &(*tracer)->next;
+	}
+	return (1);
+}
 
 int		ft_push_back_b(t_stack **stack)
 {
@@ -50,13 +68,11 @@ int		ft_sort_split(t_stack **stack, int min)
 
 }
 
-int		ft_calculate_pivot(int min, int max, int index)
+int		ft_calculate_pivot(int min, int max)
 {
-	if (min == max)
-		return (max + 1);
 	if (!((min + max) % 2))
-		return (((min + max) / 2));
-	return (((min + max) / 2) + 1);
+		return (((min + max) / 2) + 1);
+	return (((min + max) / 2));
 }
 
 int		ft_loop_positions(t_stack **stack, int pivot, int s_index)

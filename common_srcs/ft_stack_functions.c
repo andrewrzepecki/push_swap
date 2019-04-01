@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:26:34 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/31 13:20:14 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/01 17:50:37 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@ int			ft_stacklen(t_stack **stack)
 
 	i = 0;
 	tracer = stack;
-	if (*tracer)
+	while (*tracer)
 	{
+		tracer = &(*tracer)->next;
 		i++;
-		while ((*tracer)->next)
-		{
-			tracer = &(*tracer)->next;
-			i++;
-		}
 	}
 	return (i);
 }
@@ -59,7 +55,7 @@ void		ft_free_stack(t_stack **stk)
 	if (stk)
 		while (*stk)
 		{
-	//		printf("val: %d, pos: %d, inter: %d\n", (*stk)->value, (*stk)->pos, (*stk)->inter);
+		//				printf("val: %d, pos: %d, inter: %d\n", (*stk)->value, (*stk)->pos, (*stk)->inter);
 			prev = *stk;
 			(*stk) = (*stk)->next;
 			free(prev);
