@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/31 12:51:43 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/02 15:35:48 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 int			main(int ac, char **av)
 {
 	int		ret;
+	int		visu;
 	t_stack	*stack[2];
 
 	ret = 1;
 	stack[A] = NULL;
 	stack[B] = NULL;
-	if ((ret = ft_parse_args(ac, av, &stack[A])))
+	visu = ft_fetch_options(av, ac);
+	if ((ret = ft_parse_args(ac, av, &stack[A], visu)))
 	{
 		ft_pos_tab(&stack[A]);
-		ret = ft_command_loop(stack, ft_stacklen(&stack[A]));
+		if (visu)
+			ret = ft_vcommand_loop(stack, ft_stacklen(&stack[A]));
+		else
+			ret = ft_command_loop(stack, ft_stacklen(&stack[A]));
 	}
 	ft_checker_output(ret);
 	ft_free_stack(&stack[A]);

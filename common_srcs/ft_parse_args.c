@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:28:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/31 16:34:21 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/01 20:48:07 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ int			ft_divide_str(char *s, t_stack **stack)
 	return (1);
 }
 
-int			ft_parse_args(int ac, char **av, t_stack **stack)
+int			ft_parse_args(int ac, char **av, t_stack **stack, int v)
 {
 	int				i;
 	int				ret;
 	long long int	d;
 
-	i = 1;
+	i = v ? 2 : 1;
 	ret = 0;
 	while (i < ac)
 	{

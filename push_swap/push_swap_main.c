@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/01 19:18:15 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/01 20:08:16 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int			main(int ac, char **av)
 
 	stack[A] = NULL;
 	stack[B] = NULL;
-	if (ft_parse_args(ac, av, &stack[A]))
+	if (ft_parse_args(ac, av, &stack[A], 0))
 	{
 		ft_pos_tab(&stack[A]);
 		if (ft_stacklen(&stack[A]) < 4)
