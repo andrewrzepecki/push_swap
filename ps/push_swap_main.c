@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/01 20:08:16 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/04 17:05:40 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,7 @@ void	ft_sort_three_a(t_stack **stack, int min)
 	}
 }
 
-void		print_stacks(t_stack **stack)
-{
-	t_stack **tracer_a;
-	t_stack **tracer_b;
-
-	tracer_a = &stack[A];
-	tracer_b = &stack[B];
-	while (*tracer_b || *tracer_a)
-	{
-		if (*tracer_a && *tracer_b)
-			printf("int: %3d %-10d || int: %3d %10d\n", (*tracer_a)->inter, (*tracer_a)->pos, (*tracer_b)->inter, (*tracer_b)->pos);
-		if (*tracer_a && !*tracer_b)
-			printf("int: %3d %-10d || int: %3d %10s\n", (*tracer_a)->inter, (*tracer_a)->pos, -42, "empty");
-		if (!*tracer_a && *tracer_b)
-			printf("int: %3d %-10s || int: %3d%10d\n", -42, "empty", (*tracer_b)->inter, (*tracer_b)->pos);
-		if (*tracer_a)
-			tracer_a = &(*tracer_a)->next;
-		if (*tracer_b)
-			tracer_b = &(*tracer_b)->next;
-	}
-}
-
-int			ft_small_sort(t_stack **stack, int len)
+int		ft_small_sort(t_stack **stack, int len)
 {
 	if (ft_quick_check(&stack[A]))
 	{
@@ -103,10 +81,9 @@ int			ft_small_sort(t_stack **stack, int len)
 	return (0);
 }
 
-int			main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	int		max;
-	char	**commands;
 	t_stack	*stack[2];
 
 	stack[A] = NULL;
@@ -116,9 +93,9 @@ int			main(int ac, char **av)
 		ft_pos_tab(&stack[A]);
 		if (ft_stacklen(&stack[A]) < 4)
 			return (ft_small_sort(stack, ft_stacklen(&stack[A])));
-		max = ft_first_split(stack, 0, ft_stacklen(&stack[A]) - 1); 
+		max = ft_first_split(stack, 0, ft_stacklen(&stack[A]) - 1);
 		if (max > 0)
-			ft_sort_stacks(stack, 0, max, B);
+			ft_sort_stacks(stack, 0, max);
 		ft_free_stack(&stack[A]);
 		ft_free_stack(&stack[B]);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 17:49:59 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/01 18:50:27 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/04 17:06:17 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			ft_first_split(t_stack **stack, int min, int max)
 	return (ret - 1);
 }
 
-void		ft_sort_stacks(t_stack **stack, int min, int max, int s_index)
+void		ft_sort_stacks(t_stack **stack, int min, int max)
 {
 	int	ret;
 
@@ -81,10 +81,10 @@ void		ft_sort_stacks(t_stack **stack, int min, int max, int s_index)
 		ret = ft_split_b(stack, min, max);
 		max = max - ret;
 	}
-    ret = ft_sort_split(stack, min);
+	ret = ft_sort_split(stack, min);
 	min = ft_push_and_sort_a(stack, ret) + 1;
 	if (ft_quick_check(&stack[A]))
 		return ;
 	max = ft_push_back_b(stack);
-	ft_sort_stacks(stack, min, max, B);
+	ft_sort_stacks(stack, min, max);
 }

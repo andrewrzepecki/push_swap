@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/03 15:40:12 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/04 19:08:30 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@
 # include "../main_header.h"
 
 # define SDL_ERROR	4
-# define WINDOW_W	700
-# define WINDOW_H	900
+# define WINDOW_W	900
+# define WINDOW_H	1200
+# define QUIT_KEY	42
 
 
 typedef struct		s_sdl_utils
 {
 	SDL_Window		*window;
-	SDL_Surface		*surface;
+	SDL_Rect		bg;
 	SDL_Renderer	*rend;
+	int				speed;
+	SDL_Event		ev;
 }					t_sdl_utils;
 
 /* Output Funcitons */
@@ -42,6 +45,7 @@ size_t				ft_parse_command(char *buff);
 int					ft_vcommand_loop(t_stack **stack, int len);
 void				ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl, int len);
 void				ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl, int len);
+int					ft_gevents(t_sdl_utils *sdl);
 void				ft_sdl_exit(t_sdl_utils *sdl, int ret);
 
 /* DEBUG TOOLS */

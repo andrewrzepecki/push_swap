@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checker_output.c                                :+:      :+:    :+:   */
+/*   ft_ps_output.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:53:35 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/31 12:25:39 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/04 16:54:50 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void		ft_malloc_fail(void)
 {
@@ -18,14 +18,8 @@ void		ft_malloc_fail(void)
 	exit(1);
 }
 
-int			ft_checker_output(int ret)
+int			ft_error_output(void)
 {
-	if (!ret)
-		ft_putendl("Error");
-	else if (ret == 1)
-		ft_putendl("OK");
-	else
-		ft_putendl("KO");
-	return (ret);
+	ft_putendl("Error");
+	return (1);
 }
-

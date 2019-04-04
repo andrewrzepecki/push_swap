@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 16:22:16 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/29 20:33:36 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/04 17:03:52 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void		ft_rotate(t_stack **stack)
 void		ft_rev_rotate(t_stack **stack)
 {
 	t_stack	**tracer;
-	t_stack **tmp;
 
 	if (ft_stacklen(stack) > 1)
 	{
