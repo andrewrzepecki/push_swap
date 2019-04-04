@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 19:08:18 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/04 20:51:17 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void		ft_execute_commands(t_stack **stack, t_commands *c_tab, int ret)
 
 void		ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl, int len)
 {
-
 	sdl->bg.x = 0;
 	sdl->bg.y = 0;
 	sdl->bg.w = WINDOW_W;
@@ -53,6 +52,7 @@ void		ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl, int len)
 
 int			ft_initialize_graphs(t_sdl_utils *sdl)
 {
+	sdl->speed = 0;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (SDL_ERROR);
 	if (!(sdl->window = SDL_CreateWindow("Push Swap", 
@@ -72,18 +72,19 @@ int			ft_vcommand_loop(t_stack **stack, int len)
 	t_sdl_utils	sdl;
 	t_commands	c_tab[3];
 
-	sdl.speed = 10;
 	ft_initialize_ctab(c_tab);
 	if (ft_initialize_graphs(&sdl))
 		return (SDL_ERROR);
+	ft_refresh_screen(stack, &sdl, len);
 	while (get_next_line(0, &buff))
 	{
+		ft_printf("len: %d\n", len);
 		if ((ret = ft_gevents(&sdl)) == QUIT_KEY)
 			break ;
-		ft_refresh_screen(stack, &sdl, len);
 		if ((ret = ft_parse_command(buff)) > 10)
 			return (1);
 		ft_execute_commands(stack, c_tab, ret);
+		ft_refresh_screen(stack, &sdl, len);
 		ft_strdel(&buff);
 	}
 	ret = ft_check_sort(&stack[A], len);

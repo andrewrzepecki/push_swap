@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 19:08:30 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/04 20:51:11 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../main_header.h"
 
 # define SDL_ERROR	4
-# define WINDOW_W	900
+# define WINDOW_W	1500
 # define WINDOW_H	1200
 # define QUIT_KEY	42
 
