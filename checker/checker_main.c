@@ -6,11 +6,19 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/02 15:35:48 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:42:12 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int			ft_fetch_options(char **av, int ac)
+{
+	if (ac > 1)
+		if (!ft_strcmp(av[1], "-v"))
+			return (1);
+	return (0);
+}
 
 int			main(int ac, char **av)
 {

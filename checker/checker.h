@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/02 18:25:41 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:40:12 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <SDL2/SDL.h>
 # include "../main_header.h"
 
-# define SDL_ERROR	4;
-# define WINDOW_W	700;
-# define WINDOW_H	900;
+# define SDL_ERROR	4
+# define WINDOW_W	700
+# define WINDOW_H	900
 
 
 typedef struct		s_sdl_utils
@@ -40,6 +40,9 @@ size_t				ft_parse_command(char *buff);
 
 /* VISUALISER FUNCTIONS */
 int					ft_vcommand_loop(t_stack **stack, int len);
+void				ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl, int len);
+void				ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl, int len);
+void				ft_sdl_exit(t_sdl_utils *sdl, int ret);
 
 /* DEBUG TOOLS */
 void				ft_print_stacks(t_stack **stack_a, t_stack **stack_b);
