@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:57:54 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 11:24:44 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 13:10:21 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			ft_gevents(t_sdl_utils *sdl)
 		}
 		break ;
 	}
-	return (0);
+	return (1);
 }
 
 void		ft_sdl_exit(t_sdl_utils *sdl, int ret)

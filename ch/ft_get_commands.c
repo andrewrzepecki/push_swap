@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 11:24:44 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 12:07:47 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int			ft_command_loop(t_stack **stack, int len)
 		}
 		else
 			ft_push_stacks(ret, stack);
+		ft_strdel(&buff);
 	}
 	return (ft_check_sort(&stack[A], len));
 }

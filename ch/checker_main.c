@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/03 15:42:12 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/05 12:09:34 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			main(int ac, char **av)
 	int		visu;
 	t_stack	*stack[2];
 
-	ret = 1;
+	ret = 0;
 	stack[A] = NULL;
 	stack[B] = NULL;
 	visu = ft_fetch_options(av, ac);

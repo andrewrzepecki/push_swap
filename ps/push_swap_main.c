@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 17:05:40 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 12:06:22 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ int		main(int ac, char **av)
 		ft_free_stack(&stack[B]);
 		return (0);
 	}
+	ft_free_stack(&stack[A]);
+	ft_free_stack(&stack[B]);
 	return (ft_error_output());
 }
