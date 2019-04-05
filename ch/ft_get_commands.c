@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/02 17:30:54 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 11:24:44 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			ft_check_sort(t_stack **stack, int len)
 
 	i = 0;
 	tracer = stack;
-	while (*tracer) 
+	while (*tracer)
 	{
 		if ((*tracer)->pos != i)
 			return (2);

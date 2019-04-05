@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:28:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/03 15:47:09 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/05 11:34:32 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			ft_divide_str(char *s, t_stack **stack)
 	if (!(tab = ft_strsplit(s, ' ')))
 		ft_malloc_fail();
 	while (tab[i])
-	{	
+	{
 		d = ft_atoll(tab[i]);
 		if (d > _MAX_INT_ || d < _MIN_INT_)
 			return (0);
@@ -101,7 +101,7 @@ int			ft_parse_args(int ac, char **av, t_stack **stack, int v)
 		else
 			ret = 0;
 		if (!ret)
-			break;
+			break ;
 		i++;
 	}
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 16:56:08 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/20 16:36:51 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 11:27:57 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			ft_get_pivot(int **tab, int low, int high)
 	int i;
 	int pivot;
 	int left;
-	
+
 	pivot = high;
 	left = low;
 	i = low;

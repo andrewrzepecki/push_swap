@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 20:51:17 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 11:21:52 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void		ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl, int len)
 	SDL_RenderClear(sdl->rend);
 	SDL_SetRenderDrawColor(sdl->rend, 0x00, 0x00, 0x00, 0x00);
 	SDL_RenderFillRect(sdl->rend, &(sdl->bg));
-	ft_print_stack_a(&stack[A], sdl, len);
-	ft_print_stack_b(&stack[B], sdl, len);
+	ft_print_stack_a(&stack[A], sdl, (double)len);
+	ft_print_stack_b(&stack[B], sdl, (double)len);
 	SDL_RenderPresent(sdl->rend);
 	SDL_UpdateWindowSurface(sdl->window);
 	SDL_Delay(sdl->speed);
@@ -55,8 +55,8 @@ int			ft_initialize_graphs(t_sdl_utils *sdl)
 	sdl->speed = 0;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (SDL_ERROR);
-	if (!(sdl->window = SDL_CreateWindow("Push Swap", 
-				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
+	if (!(sdl->window = SDL_CreateWindow("Push Swap",
+				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 					WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN)))
 		return (SDL_ERROR);
 	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1,
@@ -78,7 +78,6 @@ int			ft_vcommand_loop(t_stack **stack, int len)
 	ft_refresh_screen(stack, &sdl, len);
 	while (get_next_line(0, &buff))
 	{
-		ft_printf("len: %d\n", len);
 		if ((ret = ft_gevents(&sdl)) == QUIT_KEY)
 			break ;
 		if ((ret = ft_parse_command(buff)) > 10)

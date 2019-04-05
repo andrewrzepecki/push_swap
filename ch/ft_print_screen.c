@@ -6,24 +6,22 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:57:54 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 20:51:19 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/05 11:24:44 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl, int len)
+void		ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl, double len)
 {
 	SDL_Rect	rect;
 	double		width;
-	double		d_len;
-	double 		start_y;
+	double		start_y;
 	t_stack		**tracer;
 
-	d_len = len > WINDOW_W / 2 ? WINDOW_W - 4 : len;
 	SDL_SetRenderDrawColor(sdl->rend, 0xFF, 0x00, 0x00, 0xFF);
-	start_y = WINDOW_H / (d_len + 2);
-	width = (WINDOW_W / 2) / (d_len + 2);
+	start_y = WINDOW_H / (len + 2);
+	width = (WINDOW_W / 2) / (len + 2);
 	tracer = stack;
 	len = 0;
 	while (*tracer)
@@ -38,18 +36,16 @@ void		ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl, int len)
 	}
 }
 
-void		ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl, int len)
+void		ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl, double len)
 {
 	SDL_Rect	rect;
-	double 		start_y;
+	double		start_y;
 	double		width;
-	double		d_len;
 	t_stack		**tracer;
 
-	d_len = len > WINDOW_W / 2 ? WINDOW_W - 4 : len;
 	SDL_SetRenderDrawColor(sdl->rend, 0xFF, 0x00, 0x00, 0xFF);
-	start_y = WINDOW_H / (d_len + 2);
-	width = (WINDOW_W / 2) / (d_len + 2);
+	start_y = WINDOW_H / (len + 2);
+	width = (WINDOW_W / 2) / (len + 2);
 	tracer = stack;
 	len = 0;
 	while (*tracer)
@@ -66,24 +62,24 @@ void		ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl, int len)
 
 int			ft_gevents(t_sdl_utils *sdl)
 {
-	const Uint8* currentKeyStates;
+	const Uint8	*key;
 
-	currentKeyStates = SDL_GetKeyboardState(NULL);
+	key = SDL_GetKeyboardState(NULL);
 	while (SDL_PollEvent(&sdl->ev) != 0)
 	{
 		if (sdl->ev.type == SDL_QUIT)
 			return (QUIT_KEY);
-		if(currentKeyStates[SDL_SCANCODE_UP])
+		if (key[SDL_SCANCODE_UP])
 		{
 			if (sdl->speed > 10)
 				sdl->speed -= 10;
 		}
-		else if (currentKeyStates[SDL_SCANCODE_DOWN])
+		else if (key[SDL_SCANCODE_DOWN])
 		{
 			if (sdl->speed < 200)
 				sdl->speed += 10;
 		}
-		break;
+		break ;
 	}
 	return (0);
 }
@@ -93,14 +89,15 @@ void		ft_sdl_exit(t_sdl_utils *sdl, int ret)
 	int quit;
 
 	quit = 1;
-	while (quit)
-	{
-		while (SDL_PollEvent(&sdl->ev) != 0)
+	if (ret != QUIT_KEY)
+		while (quit)
 		{
-			if (sdl->ev.type == SDL_QUIT)
-				quit = 0;
+			while (SDL_PollEvent(&sdl->ev) != 0)
+			{
+				if (sdl->ev.type == SDL_QUIT)
+					quit = 0;
+			}
 		}
-	}
 	SDL_DestroyRenderer(sdl->rend);
 	SDL_DestroyWindow(sdl->window);
 }

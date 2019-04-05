@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 19:16:18 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/31 13:00:20 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/05 11:30:21 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_set_positions(t_stack **stack, int *tab)
 {
-	int 	i;
+	int		i;
 	t_stack	**tracer;
 
 	tracer = stack;
@@ -30,9 +30,9 @@ void		ft_set_positions(t_stack **stack, int *tab)
 
 void		ft_pos_tab(t_stack **stack)
 {
-	int i;
-	int *tab;
-	t_stack **tracer;
+	int		i;
+	int		*tab;
+	t_stack	**tracer;
 
 	i = ft_stacklen(stack);
 	if (!(tab = (int*)malloc(sizeof(int) * (i))))

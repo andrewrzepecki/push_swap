@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/04 18:42:46 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/05 11:07:12 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,18 +49,18 @@ RM		=	rm -f
 
 LPATH	=	libft/libft.a
 
-all: $(PSNAME) $(CHKNAME)
+all: 		$(PSNAME) $(CHKNAME)
 
 %.o:		%.c	
 			@$(CC) $(CFLAGS) -c $< -o $@
 
-#lib:	
-#	@make -C libft/
+lib:	
+			@make -C libft/
 
-$(PSNAME):	$(LPATH) $(COBJS) $(PSOBJS)
+$(PSNAME):	lib $(COBJS) $(PSOBJS)
 	$(CC) -o $(PSNAME) $(COBJS) $(PSOBJS) $(LPATH)
 
-$(CHKNAME):	$(LPATH) $(COBJS) $(CHKOBJS)
+$(CHKNAME):	lib $(COBJS) $(CHKOBJS)
 	$(CC) $(GFLAGS) -o $(CHKNAME) $(COBJS) $(CHKOBJS) $(LPATH)
 
 fcleanlib:  cleanlib
@@ -69,11 +69,22 @@ fcleanlib:  cleanlib
 cleanlib:
 	@make clean -C libft/
 
-clean:		cleanlib
+cleanchecker: cleanlib
+	$(RM) $(COBJS) $(CHKOBJS)
+
+cleanpush_swap: cleanlib
 	$(RM) $(COBJS) $(PSOBJS)
 
+fcleanchecker: fcleanlib cleanchecker
+	$(RM) $(CHKNAME)
+
+fcleanpush_swap: fcleanlib cleanpush_swap
+	$(RM) $(PSNAME)
+
+clean:		cleanchecker cleanpush_swap
+
 fclean:		fcleanlib clean
-	$(RM) $(NAME)
+	$(RM) $(PSNAME) $(CHKNAME) 
 
 re:			fclean all
 
