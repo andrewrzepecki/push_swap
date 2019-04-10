@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 11:20:58 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/07 18:28:34 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../main_header.h"
 
 # define SDL_ERROR	4
-# define WINDOW_W	1500
-# define WINDOW_H	1200
+# define WINDOW_W	600
+# define WINDOW_H	600
 # define QUIT_KEY	42
 
 typedef struct		s_sdl_utils

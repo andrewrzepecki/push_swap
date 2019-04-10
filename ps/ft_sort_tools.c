@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 15:02:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 16:58:15 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:49:55 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,25 @@ int		ft_quick_check(t_stack **stack)
 	return (1);
 }
 
-int		ft_push_back_b(t_stack **stack)
+int		ft_push_back_b(t_stack **stack, int *min)
 {
-	int i;
 	int max_pos;
 	int inter;
 
-	i = 0;
 	inter = stack[A]->inter;
 	max_pos = stack[A]->pos;
 	while (stack[A]->inter == inter && inter != -1)
 	{
-		max_pos = max_pos > stack[A]->pos ? max_pos : stack[A]->pos;
-		ft_push(&stack[A], &stack[B]);
-		ft_putendl("pb");
-		i++;
+		if (stack[A]->pos == *min)
+			ft_min_rotate(stack, min);
+		else if (stack[A]->pos == *min + 1 && stack[A]->next->pos == *min)
+			ft_min_plus_one_rotate(stack, min);
+		else
+		{
+			max_pos = max_pos > stack[A]->pos ? max_pos : stack[A]->pos;
+			ft_push(&stack[A], &stack[B]);
+			ft_putendl("pb");
+		}
 	}
 	return (max_pos);
 }

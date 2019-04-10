@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 17:49:59 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/04 17:06:17 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/10 10:55:12 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void		ft_sort_stacks(t_stack **stack, int min, int max)
 	min = ft_push_and_sort_a(stack, ret) + 1;
 	if (ft_quick_check(&stack[A]))
 		return ;
-	max = ft_push_back_b(stack);
+	max = ft_push_back_b(stack, &min);
 	ft_sort_stacks(stack, min, max);
 }

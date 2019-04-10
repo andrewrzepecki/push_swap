@@ -6,11 +6,27 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 21:17:11 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/03/30 17:00:41 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:35:18 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_min_rotate(t_stack **stack, int *min)
+{
+	stack[A]->inter = -1;
+	(*min)++;
+	ft_rotate(&stack[A]);
+	ft_putendl("ra");
+}
+
+void	ft_min_plus_one_rotate(t_stack **stack, int *min)
+{
+	ft_swap(&stack[A]);
+	ft_putendl("sa");
+	ft_min_rotate(stack, min);
+	ft_min_rotate(stack, min);
+}
 
 void	ft_sort_bmax(t_stack **stack, int min)
 {
