@@ -6,18 +6,11 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 13:10:19 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:40:47 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void		ft_initialize_vctab(t_commands *tab)
-{
-	tab[0].f = ft_swap;
-	tab[1].f = ft_rotate;
-	tab[2].f = ft_rev_rotate;
-}
 
 void		ft_execute_commands(t_stack **stack, t_commands *c_tab, int ret)
 {
@@ -47,12 +40,11 @@ void		ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl, int len)
 	ft_print_stack_b(&stack[B], sdl, (double)len);
 	SDL_RenderPresent(sdl->rend);
 	SDL_UpdateWindowSurface(sdl->window);
-	SDL_Delay(sdl->speed);
 }
 
 int			ft_initialize_graphs(t_sdl_utils *sdl)
 {
-	sdl->speed = 0;
+	sdl->speed = 100;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (SDL_ERROR);
 	if (!(sdl->window = SDL_CreateWindow("Push Swap",
@@ -65,28 +57,55 @@ int			ft_initialize_graphs(t_sdl_utils *sdl)
 	return (0);
 }
 
+int			ft_store_comms(char ***tab)
+{
+	char		*s;
+	char		*buff;
+	char		*tmp;
+
+	if (!(s = ft_memalloc(1)))
+		ft_malloc_fail();
+	while (get_next_line(0, &buff))
+	{
+		if (ft_parse_command(buff) > 10)
+			return (0);
+		if (!(tmp = ft_strjoin(s, buff)))
+			ft_malloc_fail();
+		ft_strdel(&buff);
+		ft_strdel(&s);
+		if (!(s = ft_strjoin(tmp, "\n")))
+			ft_malloc_fail();
+		ft_strdel(&tmp);
+	}
+	if (!(*tab = ft_strsplit(s, '\n')))
+		ft_malloc_fail();
+	ft_strdel(&s);
+	return (1);
+}
+
 int			ft_vcommand_loop(t_stack **stack, int len)
 {
-	char		*buff;
+	char		**tab;
 	size_t		ret;
 	t_sdl_utils	sdl;
 	t_commands	c_tab[3];
+	int			i[2];
 
+	tab = NULL;
+	if (!ft_store_comms(&tab))
+		return (0);
 	ft_initialize_ctab(c_tab);
 	if (ft_initialize_graphs(&sdl))
 		return (SDL_ERROR);
-	ft_refresh_screen(stack, &sdl, len);
-	while (get_next_line(0, &buff))
+	i[0] = -1;
+	while (tab[++i[0]] && (i[1] = ft_gevents(&sdl)) != QUIT_KEY)
 	{
-		if ((ret = ft_gevents(&sdl)) == QUIT_KEY)
-			break ;
-		if ((ret = ft_parse_command(buff)) > 10)
-			return (1);
+		ft_refresh_screen(stack, &sdl, len);
+		ret = ft_parse_command(tab[i[0]]);
 		ft_execute_commands(stack, c_tab, ret);
 		ft_refresh_screen(stack, &sdl, len);
-		ft_strdel(&buff);
 	}
 	ret = ft_check_sort(&stack[A], len);
-	ft_sdl_exit(&sdl, ret);
+	ft_sdl_exit(&sdl, i[1], &tab);
 	return (ret);
 }

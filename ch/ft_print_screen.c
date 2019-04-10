@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 14:57:54 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 13:10:21 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:40:49 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,29 @@ int			ft_gevents(t_sdl_utils *sdl)
 		else if (key[SDL_SCANCODE_DOWN])
 		{
 			if (sdl->speed < 200)
-				sdl->speed += 10;
+				sdl->speed += 20;
 		}
+		SDL_Delay(sdl->speed);
 		break ;
 	}
 	return (1);
 }
 
-void		ft_sdl_exit(t_sdl_utils *sdl, int ret)
+void		ft_sdl_exit(t_sdl_utils *sdl, int ret, char ***tab)
 {
-	int quit;
-
-	quit = 1;
 	if (ret != QUIT_KEY)
-		while (quit)
+		while (ret)
 		{
 			while (SDL_PollEvent(&sdl->ev) != 0)
 			{
 				if (sdl->ev.type == SDL_QUIT)
-					quit = 0;
+					ret = 0;
 			}
 		}
+	ret = -1;
+	while ((*tab)[++ret])
+		ft_strdel(&(*tab)[ret]);
+	free(*tab);
 	SDL_DestroyRenderer(sdl->rend);
 	SDL_DestroyWindow(sdl->window);
 }

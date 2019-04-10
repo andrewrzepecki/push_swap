@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/07 18:28:34 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/10 15:38:45 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void				ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl,
 void				ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl,
 					double len);
 int					ft_gevents(t_sdl_utils *sdl);
-void				ft_sdl_exit(t_sdl_utils *sdl, int ret);
+void				ft_sdl_exit(t_sdl_utils *sdl, int ret, char ***tab);
 
 void				ft_print_stacks(t_stack **stack_a, t_stack **stack_b);
 

@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 10:53:35 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 12:09:34 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:58:12 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int			ft_checker_output(int ret)
 		ft_putendl("OK");
 	else if (ret == SDL_ERROR)
 		ft_putendl("SDL_ERROR");
-	else if (ret == QUIT_KEY)
-		ft_putendl("Window exit");
 	else
 		ft_putendl("KO");
 	return (ret);
