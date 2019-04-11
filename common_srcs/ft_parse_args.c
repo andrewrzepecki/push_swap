@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:28:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 15:59:27 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/11 15:15:56 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_str_num_space(char *s)
 	while (s[i])
 	{
 		if ((s[i] >= '0' && s[i] <= '9') || (s[i] == '+' || s[i] == '-'
-				|| s[i] == ' '))
+					|| s[i] == ' '))
 		{
 			if (i != 0 && (s[i] == '-' || s[i] == '+') && s[i - 1] != ' ')
 				return (0);
@@ -29,6 +29,8 @@ int			ft_str_num_space(char *s)
 		else
 			return (0);
 	}
+	if (i == 0)
+		return (0);
 	return (1);
 }
 
@@ -65,37 +67,47 @@ int			ft_divide_str(char *s, t_stack **stack)
 		ft_malloc_fail();
 	while (tab[i])
 	{
+		if (ft_check_llong(tab[i]))
+			break ;
 		d = ft_atoll(tab[i]);
 		if (d > _MAX_INT_ || d < _MIN_INT_)
-			return (0);
+			break ;
 		if (!ft_stack_check(stack, (int)d))
-			return (0);
+			break ;
 		i++;
 	}
-	i = -1;
-	while (tab[++i])
-		ft_strdel(&tab[i]);
-	free(tab);
+	if (tab[i])
+	{
+		ft_free_char_tab(&tab);
+		return (0);
+	}
+	ft_free_char_tab(&tab);
 	return (1);
+}
+
+int			ft_number_arg(char *s, t_stack **stack)
+{
+	long long	d;
+
+	if (ft_check_llong(s))
+		return (0);
+	d = ft_atoll(s);
+	if (d > _MAX_INT_ || d < _MIN_INT_)
+		return (0);
+	return (ft_stack_check(stack, (int)d));
 }
 
 int			ft_parse_args(int ac, char **av, t_stack **stack, int v)
 {
 	int				i;
 	int				ret;
-	long long int	d;
 
 	i = v ? 2 : 1;
 	ret = 0;
 	while (i < ac)
 	{
-		if (ft_strnum(av[i]))
-		{
-			d = ft_atoll(av[i]);
-			if (d > _MAX_INT_ || d < _MIN_INT_)
-				return (0);
-			ret = ft_stack_check(stack, (int)d);
-		}
+		if (ft_strnum(av[i]) && ft_strlen(av[i]))
+			ret = ft_number_arg(av[i], stack);
 		else if (ft_str_num_space(av[i]))
 			ret = ft_divide_str(av[i], stack);
 		else

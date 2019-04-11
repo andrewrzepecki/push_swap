@@ -6,11 +6,40 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 19:16:18 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/05 11:30:21 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/11 15:15:01 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main_header.h"
+
+void		ft_free_char_tab(char ***tab)
+{
+	int	i;
+
+	i = -1;
+	while ((*tab)[++i])
+		ft_strdel(&(*tab)[i]);
+	free(*tab);
+}
+
+int			ft_check_llong(char *s)
+{
+	int i;
+	int	c;
+
+	i = 0;
+	c = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == '0' && c == 0)
+			i++;
+		c++;
+		i++;
+	}
+	if (c < 20)
+		return (0);
+	return (1);
+}
 
 void		ft_set_positions(t_stack **stack, int *tab)
 {
