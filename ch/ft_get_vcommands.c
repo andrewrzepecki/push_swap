@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 15:40:47 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/11 15:25:50 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl, int len)
 
 int			ft_initialize_graphs(t_sdl_utils *sdl)
 {
-	sdl->speed = 100;
+	sdl->speed = 200;
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (SDL_ERROR);
 	if (!(sdl->window = SDL_CreateWindow("Push Swap",
