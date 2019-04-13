@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:21:22 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/11 15:13:20 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/13 11:09:42 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_commands
 	void			(*f)(t_stack **);
 }					t_commands;
 
+int					ft_check_no_args(char **av, int ac, int v);
 int					ft_parse_args(int ac, char **av, t_stack **stack, int visu);
 int					ft_check_double(char *s, int index, int len);
 int					ft_stack_check(t_stack **chk, int d);

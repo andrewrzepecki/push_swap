@@ -6,7 +6,7 @@
 #    By: anrzepec <anrzepec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/17 19:12:20 by anrzepec          #+#    #+#              #
-#    Updated: 2019/03/30 18:16:47 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/11 15:45:59 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,10 +108,10 @@ LIB		=	ar rc
 all:		$(NAME)
 
 %.o:		%.c	
-			$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			$(LIB) $(NAME) $(OBJS)
+			@$(LIB) $(NAME) $(OBJS)
 
 clean:
 			$(RM) $(OBJS)

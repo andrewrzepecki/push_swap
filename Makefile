@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/11 15:22:46 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/13 11:09:17 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ CHKSRC	=	ch/checker_main.c \
 			ch/ft_get_vcommands.c \
 			ch/ft_print_screen.c
 
-COMMSRC =	common_srcs/ft_execute_comms.c \
+COMMSRC =	common_srcs/ft_check_no_args.c \
+			common_srcs/ft_execute_comms.c \
 			common_srcs/ft_parse_args.c	\
 			common_srcs/ft_quicksort.c \
 			common_srcs/ft_stack_functions.c \
@@ -49,7 +50,7 @@ RM		=	rm -f
 
 LPATH	=	libft/libft.a
 
-all: 		$(PSNAME) $(CHKNAME)
+all: 		$(PSNAME) / $(CHKNAME)
 
 %.o:		%.c	
 			@$(CC) $(CFLAGS) -c $< -o $@

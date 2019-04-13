@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:27:41 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 15:43:44 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/13 11:10:02 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int			main(int ac, char **av)
 	stack[A] = NULL;
 	stack[B] = NULL;
 	visu = ft_fetch_options(av, ac);
+	if (ft_check_no_args(av, ac, visu))
+		return (0);
 	if ((ret = ft_parse_args(ac, av, &stack[A], visu)))
 	{
 		ft_pos_tab(&stack[A]);
