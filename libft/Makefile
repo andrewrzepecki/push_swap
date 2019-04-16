@@ -6,7 +6,7 @@
 #    By: anrzepec <anrzepec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/17 19:12:20 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/11 15:45:59 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/16 14:47:52 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,13 +111,13 @@ all:		$(NAME)
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			@$(LIB) $(NAME) $(OBJS)
+			@$(LIB) $(NAME) $(OBJS) && echo "Libft compiled with success!"
 
 clean:
-			$(RM) $(OBJS)
+			@$(RM) $(OBJS)
 
 fclean:		clean
-			$(RM) $(NAME)
+			@$(RM) $(NAME)
 
 re:			fclean all
 
