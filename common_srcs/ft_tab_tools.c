@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 19:16:18 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/13 10:40:19 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:06:09 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int			ft_check_llong(char *s)
 			i++;
 		}
 	}
-	ft_printf("c: %d, i: %d\n", c, i);
 	if (c < 20)
 		return (0);
 	return (1);
