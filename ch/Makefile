@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/16 14:53:02 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/16 17:34:51 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,17 +43,17 @@ all:	  	$(NAME)
 %.o:		%.c	
 			@$(CC) $(CFLAGS) -c $< -o $@
 
-lib:	
-	@make -C ../libft/
-
-$(NAME):	$(OBJS) lib
+$(NAME):	$(LPATH) $(OBJS)
 	@$(CC) $(GFLAGS) -o $(NAME) $(OBJS) $(LPATH) && echo "Checker compiled with success!"
 
+$(LPATH):
+			@make -C ../libft/ && echo "Libft compiled with success"
+
 fcleanlib:  cleanlib
-	@make fclean -C ../libft/
+			@make fclean -C ../libft/
 
 cleanlib:
-	@make clean -C ../libft/
+			@make clean -C ../libft/
 
 clean:		cleanlib
 	$(RM) $(OBJS)
@@ -63,4 +63,4 @@ fclean:		fcleanlib clean
 
 re:			fclean all
 
-.PHONY: re all fclean clean
+.PHONY: re all fclean clean checker

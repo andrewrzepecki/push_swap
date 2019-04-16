@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/16 14:35:55 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/16 17:28:15 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,20 +33,19 @@ CFLAGS	+=	-Werror -Wall -Wextra
 
 RM		=	rm -f
 
-DEBUG	=   -g3 -fsanitize=address
-
 LPATH	=	../libft/libft.a
 
-all:	  	$(NAME)
+all:		$(NAME)
 
-%.o:		%.c	
+%.o:		%.c
 			@$(CC) $(CFLAGS) -c $< -o $@
 
-lib:	
-			@make -C ../libft/
 
-$(NAME):	lib $(OBJS)
-			@$(CC) -g -o $(NAME) $(OBJS) $(LPATH) && echo "Push_swap compiled with success!"
+$(NAME):	$(LPATH) $(OBJS)
+			@$(CC) -o $(NAME) $(OBJS) $(LPATH) && echo "Push_swap compiled with success!"
+
+$(LPATH):
+			@make -C ../libft/
 
 fcleanlib:  cleanlib
 			@make fclean -C ../libft/

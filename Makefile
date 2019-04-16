@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/16 14:47:12 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/16 17:30:53 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,4 +42,4 @@ fclean:		fcleanchecker fcleanpush_swap
 
 re:			fclean all
 
-.PHONY: 	re all fclean clean cleanchecker cleanpush_swap fcleanchecker fcleanpush_swap
+.PHONY: 	re all fclean clean push_swap checker cleanchecker cleanpush_swap fcleanchecker fcleanpush_swap
