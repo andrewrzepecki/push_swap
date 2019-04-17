@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/16 17:34:51 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/17 10:29:32 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(NAME):	$(LPATH) $(OBJS)
 	@$(CC) $(GFLAGS) -o $(NAME) $(OBJS) $(LPATH) && echo "Checker compiled with success!"
 
 $(LPATH):
-			@make -C ../libft/ && echo "Libft compiled with success"
+			@make -C ../libft/
 
 fcleanlib:  cleanlib
 			@make fclean -C ../libft/
