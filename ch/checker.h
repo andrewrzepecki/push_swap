@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 15:38:45 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/25 14:51:14 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int					ft_command_loop(t_stack **stack, int len);
 void				ft_initialize_ctab(t_commands *tab);
 int					ft_check_sort(t_stack **stack, int len);
 void				ft_push_stacks(int function, t_stack **stack);
-size_t				ft_parse_command(char *buff);
+size_t				ft_parse_command(char *buff, int ret);
 
 int					ft_vcommand_loop(t_stack **stack, int len);
 void				ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl,

@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/17 10:29:32 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/04/21 16:11:42 by andrewrze        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,15 +38,15 @@ DEBUG	=   -g3 -fsanitize=address
 
 LPATH	=	../libft/libft.a
 
-all:	  	$(NAME)
+all:	  	$(NAME) lib
 
 %.o:		%.c	
 			@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$(LPATH) $(OBJS)
+$(NAME):   $(OBJS)
 	@$(CC) $(GFLAGS) -o $(NAME) $(OBJS) $(LPATH) && echo "Checker compiled with success!"
 
-$(LPATH):
+lib:
 			@make -C ../libft/
 
 fcleanlib:  cleanlib

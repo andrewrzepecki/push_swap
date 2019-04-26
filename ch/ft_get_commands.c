@@ -6,35 +6,35 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 15:44:19 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/25 16:11:18 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-size_t		ft_parse_command(char *buff)
+size_t		ft_parse_command(char *buff, int len)
 {
-	if (!ft_strcmp(buff, "sa"))
+	if (!ft_strcmp(buff, "sa") && (int)ft_strlen(buff) == len - 1)
 		return (0);
-	if (!ft_strcmp(buff, "ra"))
+	if (!ft_strcmp(buff, "ra") && (int)ft_strlen(buff) == len - 1)
 		return (1);
-	if (!ft_strcmp(buff, "rra"))
+	if (!ft_strcmp(buff, "rra") && (int)ft_strlen(buff) == len - 1)
 		return (2);
-	if (!ft_strcmp(buff, "sb"))
+	if (!ft_strcmp(buff, "sb") && (int)ft_strlen(buff) == len - 1)
 		return (3);
-	if (!ft_strcmp(buff, "rb"))
+	if (!ft_strcmp(buff, "rb") && (int)ft_strlen(buff) == len - 1)
 		return (4);
-	if (!ft_strcmp(buff, "rrb"))
+	if (!ft_strcmp(buff, "rrb") && (int)ft_strlen(buff) == len - 1)
 		return (5);
-	if (!ft_strcmp(buff, "ss"))
+	if (!ft_strcmp(buff, "ss") && (int)ft_strlen(buff) == len - 1)
 		return (6);
-	if (!ft_strcmp(buff, "rr"))
+	if (!ft_strcmp(buff, "rr") && (int)ft_strlen(buff) == len - 1)
 		return (7);
-	if (!ft_strcmp(buff, "rrr"))
+	if (!ft_strcmp(buff, "rrr") && (int)ft_strlen(buff) == len - 1)
 		return (8);
-	if (!ft_strcmp(buff, "pa"))
+	if (!ft_strcmp(buff, "pa") && (int)ft_strlen(buff) == len - 1)
 		return (9);
-	if (!ft_strcmp(buff, "pb"))
+	if (!ft_strcmp(buff, "pb") && (int)ft_strlen(buff) == len - 1)
 		return (10);
 	return (1995);
 }
@@ -74,13 +74,13 @@ int			ft_check_sort(t_stack **stack, int len)
 int			ft_command_loop(t_stack **stack, int len)
 {
 	char		*buff;
-	size_t		ret;
+	int			ret;
 	t_commands	c_tab[3];
 
 	ft_initialize_ctab(c_tab);
-	while (get_next_line(0, &buff))
+	while ((ret = get_next_line(0, &buff)) > 0)
 	{
-		if ((ret = ft_parse_command(buff)) > 10)
+		if ((ret = ft_parse_command(buff, ret)) > 10)
 			return (0);
 		if (ret < 3)
 			c_tab[ret].f(&stack[A]);

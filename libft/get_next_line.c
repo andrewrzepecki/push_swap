@@ -6,37 +6,50 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 11:20:17 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 12:11:25 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/25 16:11:05 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+static char		*ft_newline(char **s, int fd, int i)
+{
+	char *tmp;
+	char *line;
+
+	if (!(line = ft_strndup(s[fd], i)))
+		return (NULL);
+	if (!(tmp = ft_strdup(s[fd] + i + 1)))
+		return (NULL);
+	ft_strdel(&s[fd]);
+	s[fd] = tmp;
+	if (!s[fd][0])
+		ft_strdel(&s[fd]);
+	return (line);
+}
+
 static int		ft_get_line(char **line, char **s, int fd, int ret)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
 	while (s[fd][i] != '\0' && s[fd][i] != '\n')
 		i++;
 	if (s[fd][i] == '\n')
 	{
-		*line = ft_strndup(s[fd], i);
-		tmp = ft_strdup(s[fd] + i + 1);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (s[fd][0] == '\0')
-			ft_strdel(&s[fd]);
+		if (!(*line = ft_newline(s, fd, i)))
+			return (-1);
+		i++;
 	}
 	else
 	{
 		if (ret == BUFF_SIZE)
 			return (get_next_line(fd, line));
-		*line = ft_strdup(s[fd]);
+		if (!(*line = ft_strdup(s[fd])))
+			return (-1);
 		ft_strdel(&s[fd]);
 	}
-	return (1);
+	return (i);
 }
 
 static int		read_line(int fd, char **s, int *ret)

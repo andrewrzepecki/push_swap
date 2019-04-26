@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 15:28:49 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/13 10:58:39 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/21 15:59:21 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_str_num_space(char *s)
 		else
 			return (0);
 	}
-	if (i == 0)
+	if (i == 0 || ft_strlen(s) == (size_t)ft_char_count(s, ' '))
 		return (0);
 	return (1);
 }

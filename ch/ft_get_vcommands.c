@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/11 15:25:50 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:02:06 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,20 @@ int			ft_initialize_graphs(t_sdl_utils *sdl)
 
 int			ft_store_comms(char ***tab)
 {
+	int			ret;
 	char		*s;
 	char		*buff;
 	char		*tmp;
 
 	if (!(s = ft_memalloc(1)))
 		ft_malloc_fail();
-	while (get_next_line(0, &buff))
+	while ((ret = get_next_line(0, &buff)) > 0)
 	{
-		if (ft_parse_command(buff) > 10)
+		if (ft_parse_command(buff, ret) > 10)
+		{
+			ft_strdel(&s);
 			return (0);
+		}
 		if (!(tmp = ft_strjoin(s, buff)))
 			ft_malloc_fail();
 		ft_strdel(&buff);
@@ -101,7 +105,7 @@ int			ft_vcommand_loop(t_stack **stack, int len)
 	while (tab[++i[0]] && (i[1] = ft_gevents(&sdl)) != QUIT_KEY)
 	{
 		ft_refresh_screen(stack, &sdl, len);
-		ret = ft_parse_command(tab[i[0]]);
+		ret = ft_parse_command(tab[i[0]], (ret = ft_strlen(tab[i[0]]) + 1));
 		ft_execute_commands(stack, c_tab, ret);
 		ft_refresh_screen(stack, &sdl, len);
 	}
