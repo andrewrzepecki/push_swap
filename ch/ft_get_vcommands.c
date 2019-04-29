@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/25 15:02:06 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/29 20:46:17 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int			ft_initialize_graphs(t_sdl_utils *sdl)
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		return (SDL_ERROR);
 	if (!(sdl->window = SDL_CreateWindow("Push Swap",
-				SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 					WINDOW_W, WINDOW_H, SDL_WINDOW_SHOWN)))
 		return (SDL_ERROR);
 	if (!(sdl->rend = SDL_CreateRenderer(sdl->window, -1,
-				SDL_RENDERER_ACCELERATED)))
+					SDL_RENDERER_ACCELERATED)))
 		return (SDL_ERROR);
 	return (0);
 }
@@ -70,6 +70,7 @@ int			ft_store_comms(char ***tab)
 	{
 		if (ft_parse_command(buff, ret) > 10)
 		{
+			ft_strdel(&buff);
 			ft_strdel(&s);
 			return (0);
 		}
@@ -92,24 +93,14 @@ int			ft_vcommand_loop(t_stack **stack, int len)
 	char		**tab;
 	size_t		ret;
 	t_sdl_utils	sdl;
-	t_commands	c_tab[3];
-	int			i[2];
 
 	tab = NULL;
 	if (!ft_store_comms(&tab))
 		return (0);
-	ft_initialize_ctab(c_tab);
 	if (ft_initialize_graphs(&sdl))
 		return (SDL_ERROR);
-	i[0] = -1;
-	while (tab[++i[0]] && (i[1] = ft_gevents(&sdl)) != QUIT_KEY)
-	{
-		ft_refresh_screen(stack, &sdl, len);
-		ret = ft_parse_command(tab[i[0]], (ret = ft_strlen(tab[i[0]]) + 1));
-		ft_execute_commands(stack, c_tab, ret);
-		ft_refresh_screen(stack, &sdl, len);
-	}
+	ft_graph_loop(&sdl, stack, len, tab);
 	ret = ft_check_sort(&stack[A], len);
-	ft_sdl_exit(&sdl, i[1], &tab);
+	ft_sdl_exit(&sdl, QUIT_KEY, &tab);
 	return (ret);
 }

@@ -6,11 +6,17 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 19:16:18 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/16 13:06:09 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/27 17:44:04 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main_header.h"
+
+int			ft_command_error(char *buff)
+{
+	ft_strdel(&buff);
+	return (0);
+}
 
 void		ft_free_char_tab(char ***tab)
 {

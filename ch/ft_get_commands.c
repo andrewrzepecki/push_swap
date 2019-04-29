@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/25 16:11:18 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/27 17:49:30 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			ft_command_loop(t_stack **stack, int len)
 	while ((ret = get_next_line(0, &buff)) > 0)
 	{
 		if ((ret = ft_parse_command(buff, ret)) > 10)
-			return (0);
+			return (ft_command_error(buff));
 		if (ret < 3)
 			c_tab[ret].f(&stack[A]);
 		else if (ret < 6)

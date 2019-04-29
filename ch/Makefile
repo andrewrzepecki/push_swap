@@ -6,13 +6,14 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/21 16:11:42 by andrewrze        ###   ########.fr        #
+#    Updated: 2019/04/29 20:39:56 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= 	../checker
 
-SRC 	= 	checker_main.c \
+SRC 	= 	sdl_loop.c \
+			checker_main.c \
 			ft_checker_output.c \
 			ft_get_commands.c \
 			ft_get_vcommands.c \

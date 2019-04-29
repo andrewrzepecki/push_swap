@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/15 16:21:22 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/13 11:09:42 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:44:30 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int					ft_get_pos(int *tab, int t_len, int nb);
 t_stack				*ft_new_stkelem(int d, int *tab, int t_len);
 void				ft_push_stacks(int ret, t_stack **stack);
 
+int					ft_command_error(char *buff);
 void				ft_malloc_fail(void);
 
 void				ft_swap(t_stack **stack);
