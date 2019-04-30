@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 17:49:59 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/10 10:55:12 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/04/29 14:52:47 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			ft_split_a(t_stack **stack, int pivot)
 	i = 0;
 	while ((ret = ft_loop_positions(&stack[A], pivot, A)) > -1)
 	{
-		while (ret)
+		while (ret > 0)
 		{
 			ft_rotate(&stack[A]);
 			ft_putendl("ra");

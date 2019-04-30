@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/29 20:46:17 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/30 09:26:59 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,10 @@ int			ft_store_comms(char ***tab)
 
 	if (!(s = ft_memalloc(1)))
 		ft_malloc_fail();
-	while ((ret = get_next_line(0, &buff)) > 0)
+	if (!(ft_read_file(&s)))
 	{
-		if (ft_parse_command(buff, ret) > 10)
-		{
-			ft_strdel(&buff);
-			ft_strdel(&s);
-			return (0);
-		}
-		if (!(tmp = ft_strjoin(s, buff)))
-			ft_malloc_fail();
-		ft_strdel(&buff);
 		ft_strdel(&s);
-		if (!(s = ft_strjoin(tmp, "\n")))
-			ft_malloc_fail();
-		ft_strdel(&tmp);
+		return (0);
 	}
 	if (!(*tab = ft_strsplit(s, '\n')))
 		ft_malloc_fail();

@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/29 20:46:09 by anrzepec         ###   ########.fr       */
+/*   Updated: 2019/04/30 09:25:48 by andrewrze        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ size_t				ft_parse_command(char *buff, int ret);
 
 int					ft_vcommand_loop(t_stack **stack, int len);
 void				ft_graph_loop(t_sdl_utils *sdl, t_stack **stack, int len, char **tab);
+int					ft_read_file(char **s);
 void				ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl,
 					double len);
 void				ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl,
