@@ -6,7 +6,7 @@
 #    By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 18:48:32 by anrzepec          #+#    #+#              #
-#    Updated: 2019/04/16 17:28:15 by anrzepec         ###   ########.fr        #
+#    Updated: 2019/05/02 14:14:24 by anrzepec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,16 +35,16 @@ RM		=	rm -f
 
 LPATH	=	../libft/libft.a
 
-all:		$(NAME)
+all:		$(NAME) lib
 
 %.o:		%.c
 			@$(CC) $(CFLAGS) -c $< -o $@
 
 
-$(NAME):	$(LPATH) $(OBJS)
+$(NAME):	$(OBJS)
 			@$(CC) -o $(NAME) $(OBJS) $(LPATH) && echo "Push_swap compiled with success!"
 
-$(LPATH):
+lib:
 			@make -C ../libft/
 
 fcleanlib:  cleanlib

@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 20:26:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/30 09:25:05 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/05/02 12:10:19 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int			ft_read_file(char **s)
 	return (1);
 }
 
-void		ft_graph_loop(t_sdl_utils *sdl, t_stack **stack, int len, char **tab)
+void		ft_graph_loop(t_sdl_utils *sdl, t_stack **stack, int len,
+			char **tab)
 {
-	int 		ret;
+	int			ret;
 	int			i;
 	int			q;
 	t_commands	c_tab[3];

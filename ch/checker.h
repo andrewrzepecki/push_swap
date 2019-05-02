@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:31:51 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/30 09:25:48 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/05/02 12:09:12 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,18 @@ void				ft_push_stacks(int function, t_stack **stack);
 size_t				ft_parse_command(char *buff, int ret);
 
 int					ft_vcommand_loop(t_stack **stack, int len);
-void				ft_graph_loop(t_sdl_utils *sdl, t_stack **stack, int len, char **tab);
+void				ft_graph_loop(t_sdl_utils *sdl, t_stack **stack,
+					int len, char **tab);
 int					ft_read_file(char **s);
 void				ft_print_stack_a(t_stack **stack, t_sdl_utils *sdl,
 					double len);
 void				ft_print_stack_b(t_stack **stack, t_sdl_utils *sdl,
 					double len);
 int					ft_gevents(t_sdl_utils *sdl);
-void				ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl, int len);
-void				ft_execute_commands(t_stack **stack, t_commands *c_tab, int ret);
+void				ft_refresh_screen(t_stack **stack, t_sdl_utils *sdl,
+					int len);
+void				ft_execute_commands(t_stack **stack, t_commands *c_tab,
+					int ret);
 void				ft_sdl_exit(t_sdl_utils *sdl, int ret, char ***tab);
 
 void				ft_print_stacks(t_stack **stack_a, t_stack **stack_b);

@@ -6,7 +6,7 @@
 /*   By: anrzepec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 11:14:24 by anrzepec          #+#    #+#             */
-/*   Updated: 2019/04/30 09:26:59 by andrewrze        ###   ########.fr       */
+/*   Updated: 2019/05/02 11:51:28 by anrzepec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ int			ft_initialize_graphs(t_sdl_utils *sdl)
 
 int			ft_store_comms(char ***tab)
 {
-	int			ret;
 	char		*s;
-	char		*buff;
-	char		*tmp;
 
 	if (!(s = ft_memalloc(1)))
 		ft_malloc_fail();
