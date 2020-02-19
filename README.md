@@ -26,25 +26,30 @@ The goal of this project was to understand an algorithm's complexity, quantified
 ## Installation and usage
 
 ```
-git clone https://github.com/andrewrzepecki/fillit && cd fillit && make
+git clone https://github.com/andrewrzepecki/push_swap && cd push_swap && make
 ```
 
-The program recieves a file containing valid tetriminos in this format:
+## checker
 
-![fillit](png/tetris_pieces.png)
-
-Tetriminos pieces must be 4x4 format, using '#' and '.' to form the piece, and must be seperated by a newline.
+Execute the program by passing a list of intergers to it. Using STDIN, input the actions to perform on the list to sort it.
+Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sorted the list, or 'ERROR' if it hasn't.
 
 **Example:**
 
 ```
-./fillit [tetris_pieces]
+./checker [list_of_intergers]
 ```
 
-![fillit](png/fillit_output.png)
+![push_swap](png/fillit_output.png)
 
-The tetriminos pieces are distinguished with their own unique character: 'A' for the first tetriminos supplied, 'B' for the second, 'C' for the third ...
+## push_swap
 
-The concept of our algorithm is to recursively test each tetriminos, starting in an area the size of the sum of the given tetriminos areas.
+The push_swap program returns a list of actions to STDOUT that will sort the list given as an argument in as little actions possible.
 
+**Example:**
 
+```
+./push_swap [list_of_intergers]
+```
+
+![push_swap](png/fillit_output.png)
