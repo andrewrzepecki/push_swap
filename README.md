@@ -40,7 +40,7 @@ Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sort
 ./checker [list_of_unique_intergers]
 ```
 
-![push_swap](png/checker.png)
+![push_swap](png/checker_ok.png) ![push_swap](png/checker_ko.png)
 
 
 With the visualiser option combined with push_swap generating the actions:
