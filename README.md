@@ -43,9 +43,9 @@ Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sort
 ![push_swap](png/checker.png)
 
 
-With the visualiser option:
+With the visualiser option combined with push_swap generating the actions:
 ```
-./checker -v [list_of_unique_intergers]
+ARG=`ruby -e "puts (1..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
 ```
 
 ![push_swap](png/checker_vis.png)
