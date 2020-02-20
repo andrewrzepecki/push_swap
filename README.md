@@ -31,8 +31,8 @@ git clone https://github.com/andrewrzepecki/push_swap && cd push_swap && make
 
 ## checker
 
-Execute the program by passing a list of intergers to it. Using STDIN, input the actions to perform on the list to sort it.
-Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sorted the list, or 'ERROR' if it hasn't.
+Execute the program by passing a list of intergers to it. Using STDIN, input the actions seperated by a new line to perform on the list to sort it.
+Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sorted the list, or 'KO' if it hasn't or an invalid action has been entered.
 
 **Example:**
 
@@ -40,7 +40,7 @@ Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sort
 ./checker [list_of_unique_intergers]
 ```
 
-![push_swap](png/checker_ok.png) ![push_swap](png/checker_ko.png)
+![push_swap](png/checker_ko.png) ![push_swap](png/checker_ok.png)
 
 
 With the visualiser option combined with push_swap generating the actions:
