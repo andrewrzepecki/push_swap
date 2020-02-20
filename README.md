@@ -37,11 +37,18 @@ Use CTRL-D to close STDIN pipe, and checker will return 'OK' if the actions sort
 **Example:**
 
 ```
-./checker [list_of_intergers]
+./checker [list_of_unique_intergers]
 ```
 
-![push_swap](png/fillit_output.png)
+![push_swap](png/checker.png)
 
+
+With the visualiser option:
+```
+./checker -v [list_of_unique_intergers]
+```
+
+![push_swap](png/checker_vis.png)
 ## push_swap
 
 The push_swap program returns a list of actions to STDOUT that will sort the list given as an argument in as little actions possible.
@@ -52,4 +59,4 @@ The push_swap program returns a list of actions to STDOUT that will sort the lis
 ./push_swap [list_of_intergers]
 ```
 
-![push_swap](png/fillit_output.png)
+![push_swap](png/push_swap.png)
